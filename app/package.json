@@ -1,7 +1,7 @@
 {
-  "name": "donation2",
+  "name": "app_donation",
   "version": "1.0.0",
-  "description": "donation2: An Ionic project",
+  "description": "App Donation",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
