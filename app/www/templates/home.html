@@ -3,8 +3,11 @@
     <h1 class="title">Donation</h1>
   </ion-header-bar>
 	<ion-content ng-controller="HomeController">
-		<center style="padding-top:20px;">
+		<center style="padding-top:80px;">
 			<button ng-click="getPhoto()" class="button icon-left ion-upload button-positive">Enviar Nota Fiscal</button>
 		</center>
+		<img ng-src="{{ lastPhoto }}">
+		{{msg}}
+
   </ion-content>
 </ion-pane>
