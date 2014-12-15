@@ -30,8 +30,8 @@ angular.module('starter', ['ionic'])
 	})
 })
 
-.controller('HomeController', function($scope, $stateParams, CordovaCamera, $http) {
-	$scope.getPhoto = function(imageInfo) {
+.controller('HomeController',['$scope', '$stateParams', '$http', 'CordovaCamera' ,function($scope, $stateParams, $http, CordovaCamera) {
+	$scope.getPhoto = function() {
 		var imageInfo = {
 						quality: 75,
 						destinationType : Camera.DestinationType.DATA_URL,
@@ -45,13 +45,17 @@ angular.module('starter', ['ionic'])
 			$scope.imageURI;
 			$scope.lastPhoto = "data:image/jpeg;base64," + imageURI;
 			$scope.msg = "Success!";
+			$http({
+				url : 'http://54.174.41.185/ocr/index.php',
+				method:'post',	
+				data : JSON.stringify({'teste': "aa"}),
+			});
 		}, function(err) {
 			console.err(err);
 			$scope.msg = "Fail!";
-
 		});
 	};
-})
+}])
 
 .controller('submitController', function($scope, $http) {
 	var success = function() {
@@ -63,13 +67,14 @@ angular.module('starter', ['ionic'])
 	};
 
 	$scope.submitFile = function( $scope, $http) {
+		console.log("sgaugsafhoaufgpiaufiushdfjh")
 		var parameter = {
 			image : $scope.lastPhoto
 		};
 		var options = new FileUploadOptions();
 		options.parameter = parameter;
 		var fileTransfer = new FileTransfer();
-		fileTransfer.upload($scope.imageURI, encodeURI("http://##api_url"), success, fail, options );
+		fileTransfer.upload($scope.imageURI, encodeURI("http://54.174.227.90/ocr/"), success, fail, options );
 	};
 })
 
